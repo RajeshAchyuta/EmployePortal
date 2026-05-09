@@ -32,7 +32,7 @@ public class DeleteData extends HttpServlet {
 			Connection con = DriverManager.getConnection(
 					"jdbc:mysql://localhost:3306/jdbc",
 					"root",
-					"Rajesh@1947");
+					"YourPassword");
 
 			PreparedStatement pst = con.prepareStatement(
 					"delete from employee where Emp_Id=?");

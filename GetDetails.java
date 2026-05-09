@@ -106,7 +106,7 @@ public class GetDetails extends HttpServlet {
 			Connection con = DriverManager.getConnection(
 					"jdbc:mysql://localhost:3306/jdbc",
 					"root",
-					"Rajesh@1947");
+					"yourpassword");
 
 			PreparedStatement pst = con.prepareStatement(
 					"select * from " + request.getParameter("tname"));

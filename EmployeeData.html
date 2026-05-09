@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Employee Data</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#141e30,#243b55);
+    overflow-x:hidden;
+    overflow-y:auto;
+    position:relative;
+    padding:40px 20px;
+}
+
+/* Background Glow */
+
+body::before{
+    content:'';
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:rgba(0,255,255,0.15);
+    border-radius:50%;
+    top:-100px;
+    left:-100px;
+    filter:blur(90px);
+    z-index:0;
+}
+
+body::after{
+    content:'';
+    position:fixed;
+    width:400px;
+    height:400px;
+    background:rgba(255,0,255,0.15);
+    border-radius:50%;
+    bottom:-100px;
+    right:-100px;
+    filter:blur(90px);
+    z-index:0;
+}
+
+/* Main Container */
+
+.container{
+    position:relative;
+    width:430px;
+    padding:42px;
+    border-radius:28px;
+    backdrop-filter:blur(16px);
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+    box-shadow:0 10px 35px rgba(0,0,0,0.4);
+    z-index:10;
+    animation:fadeIn 1s ease;
+}
+
+/* Heading */
+
+.container h1{
+    text-align:center;
+    color:white;
+    margin-bottom:30px;
+    font-size:36px;
+    letter-spacing:1px;
+}
+
+/* Input Box */
+
+.input-box{
+    margin-bottom:22px;
+    position:relative;
+}
+
+.input-box label{
+    display:block;
+    margin-bottom:8px;
+    color:#f1f1f1;
+    font-weight:bold;
+    letter-spacing:0.5px;
+}
+
+/* Icons */
+
+.input-box i{
+    position:absolute;
+    top:47px;
+    left:14px;
+    color:#cbd5e1;
+    font-size:15px;
+}
+
+/* Input Fields */
+
+.input-box input{
+    width:100%;
+    padding:14px 14px 14px 45px;
+    border:none;
+    border-radius:12px;
+    outline:none;
+    background:rgba(255,255,255,0.15);
+    color:white;
+    font-size:15px;
+    transition:0.3s;
+}
+
+.input-box input::placeholder{
+    color:#ddd;
+}
+
+.input-box input:focus{
+    box-shadow:0 0 14px #00e5ff;
+    transform:scale(1.02);
+}
+
+/* Buttons */
+
+.btn{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:14px;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    color:white;
+    margin-top:14px;
+    transition:0.4s;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+}
+
+/* Insert Button */
+
+.insert-btn{
+    background:linear-gradient(45deg,#00c853,#64dd17);
+    box-shadow:0 0 18px rgba(0,230,118,0.18);
+}
+
+.insert-btn:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 22px #00e676;
+}
+
+/* Back Button */
+
+.back-btn{
+    background:linear-gradient(45deg,#2979ff,#00b0ff);
+    box-shadow:0 0 18px rgba(64,196,255,0.18);
+}
+
+.back-btn:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 22px #40c4ff;
+}
+
+/* Animation */
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Responsive */
+
+@media(max-width:500px){
+
+    body{
+        padding:30px 15px;
+    }
+
+    .container{
+        width:100%;
+        padding:34px 24px;
+    }
+
+    .container h1{
+        font-size:30px;
+    }
+
+    .btn{
+        font-size:15px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Employee Data</h1>
+
+    <form action="HPS" method="post">
+
+        <!-- Employee ID -->
+
+        <div class="input-box">
+
+            <label>Employee ID</label>
+
+            <i class="fa-solid fa-id-card"></i>
+
+            <input type="number"
+                   name="eid"
+                   placeholder="Enter Employee ID"
+                   required>
+
+        </div>
+
+        <!-- Employee Name -->
+
+        <div class="input-box">
+
+            <label>Employee Name</label>
+
+            <i class="fa-solid fa-user"></i>
+
+            <input type="text"
+                   name="ename"
+                   placeholder="Enter Employee Name"
+                   required>
+
+        </div>
+
+        <!-- Employee Salary -->
+
+        <div class="input-box">
+
+            <label>Employee Salary</label>
+
+            <i class="fa-solid fa-money-bill-wave"></i>
+
+            <input type="number"
+                   name="esal"
+                   placeholder="Enter Employee Salary"
+                   required>
+
+        </div>
+
+        <!-- Employee Location -->
+
+        <div class="input-box">
+
+            <label>Employee Location</label>
+
+            <i class="fa-solid fa-location-dot"></i>
+
+            <input type="text"
+                   name="eloc"
+                   placeholder="Enter Employee Location"
+                   required>
+
+        </div>
+
+        <!-- Submit Button -->
+
+        <button class="btn insert-btn">
+
+            <i class="fa-solid fa-user-plus"></i>
+
+            Insert Employee
+
+        </button>
+
+    </form>
+
+    <!-- Back Button -->
+
+    <button class="btn back-btn"
+    onclick="window.location.href='Home.html'">
+
+        <i class="fa-solid fa-arrow-left"></i>
+
+        Back to Home
+
+    </button>
+
+</div>
+
+</body>
+
+</html>

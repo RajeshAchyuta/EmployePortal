@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Search Employee</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#141e30,#243b55);
+    overflow:hidden;
+}
+
+body::before{
+    content:'';
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:rgba(0,255,255,0.15);
+    border-radius:50%;
+    top:-100px;
+    left:-100px;
+    filter:blur(80px);
+}
+
+body::after{
+    content:'';
+    position:absolute;
+    width:400px;
+    height:400px;
+    background:rgba(255,0,255,0.15);
+    border-radius:50%;
+    bottom:-100px;
+    right:-100px;
+    filter:blur(80px);
+}
+
+.container{
+    position:relative;
+    width:420px;
+    padding:40px;
+    border-radius:25px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.2);
+    box-shadow:0 8px 32px rgba(0,0,0,0.4);
+    z-index:1;
+}
+
+.container h1{
+    text-align:center;
+    color:white;
+    margin-bottom:30px;
+    font-size:34px;
+}
+
+.input-box{
+    margin-bottom:25px;
+}
+
+.input-box label{
+    display:block;
+    color:white;
+    margin-bottom:10px;
+    font-weight:bold;
+}
+
+.input-box input{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    outline:none;
+    background:rgba(255,255,255,0.15);
+    color:white;
+    font-size:15px;
+}
+
+.input-box input::placeholder{
+    color:#ddd;
+}
+
+.btn{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(45deg,#2979ff,#00b0ff);
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.4s;
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 0 18px #40c4ff;
+}
+
+.back-btn{
+    margin-top:15px;
+    background:linear-gradient(45deg,#ff6d00,#ffab00);
+}
+
+.back-btn:hover{
+    box-shadow:0 0 18px #ff9800;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Search Employee</h1>
+
+    <form action="SearchEmployeeServlet"
+          method="get">
+
+        <div class="input-box">
+
+            <label>Enter Employee ID</label>
+
+            <input type="number"
+                   name="eid"
+                   placeholder="Enter Employee ID"
+                   required>
+
+        </div>
+
+        <button class="btn">
+
+            🔍 Search Employee
+
+        </button>
+
+    </form>
+
+    <button class="btn back-btn"
+    onclick="window.location.href='Home.html'">
+
+        ⬅ Back To Home
+
+    </button>
+
+</div>
+
+</body>
+</html>

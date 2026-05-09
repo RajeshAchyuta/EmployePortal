@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Employee Portal</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(135deg,#141e30,#243b55);
+    overflow-x:hidden;
+    overflow-y:auto;
+    position:relative;
+    color:white;
+}
+
+/* Background Glow */
+
+body::before{
+    content:'';
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:rgba(0,255,255,0.12);
+    border-radius:50%;
+    top:-150px;
+    left:-150px;
+    filter:blur(100px);
+    z-index:0;
+}
+
+body::after{
+    content:'';
+    position:fixed;
+    width:450px;
+    height:450px;
+    background:rgba(59,130,246,0.15);
+    border-radius:50%;
+    bottom:-150px;
+    right:-150px;
+    filter:blur(100px);
+    z-index:0;
+}
+
+/* Navbar */
+
+.navbar{
+    width:100%;
+    height:80px;
+    padding:0 60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:relative;
+    z-index:100;
+}
+
+/* Logo */
+
+.logo{
+    font-size:34px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.logo span{
+    color:#00b0ff;
+    text-shadow:0 0 15px #00b0ff;
+}
+
+/* Logout Button */
+
+.logout-btn{
+    padding:12px 24px;
+    border-radius:14px;
+    text-decoration:none;
+    color:white;
+    font-weight:bold;
+    background:linear-gradient(45deg,#ff416c,#ff4b2b);
+    transition:0.4s;
+    box-shadow:0 0 18px rgba(255,65,108,0.35);
+}
+
+.logout-btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 0 24px #ff416c;
+}
+
+/* Main */
+
+.main{
+    width:100%;
+    min-height:calc(100vh - 80px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:70px;
+    padding:40px 70px 100px;
+    position:relative;
+    z-index:10;
+}
+
+/* Left Section */
+
+.left{
+    width:50%;
+    animation:slideLeft 1s ease;
+}
+
+/* Badge */
+
+.badge{
+    display:inline-block;
+    padding:12px 24px;
+    border-radius:30px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.12);
+    color:#00e5ff;
+    margin-bottom:28px;
+    font-weight:bold;
+    backdrop-filter:blur(10px);
+    box-shadow:0 0 18px rgba(0,229,255,0.15);
+}
+
+/* Heading */
+
+.left h1{
+    font-size:72px;
+    line-height:1.15;
+    margin-bottom:28px;
+    font-weight:800;
+}
+
+.left h1 span{
+    color:#60a5fa;
+    text-shadow:0 0 18px #60a5fa;
+}
+
+/* Paragraph */
+
+.left p{
+    font-size:21px;
+    line-height:1.8;
+    color:#cbd5e1;
+    margin-bottom:35px;
+    max-width:650px;
+}
+
+/* Stats */
+
+.stats{
+    display:flex;
+    gap:25px;
+    flex-wrap:wrap;
+}
+
+/* Stat Cards */
+
+.stat-card{
+    width:180px;
+    padding:24px;
+    border-radius:24px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.12);
+    text-align:center;
+    transition:0.4s;
+}
+
+.stat-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 24px rgba(0,176,255,0.28);
+}
+
+.stat-card h2{
+    font-size:40px;
+    margin-bottom:10px;
+    color:#00b0ff;
+}
+
+.stat-card p{
+    font-size:15px;
+    margin:0;
+}
+
+/* Right Section */
+
+.right{
+    width:420px;
+    padding:42px;
+    border-radius:30px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,0.12);
+    box-shadow:0 10px 40px rgba(0,0,0,0.35);
+    animation:slideRight 1s ease;
+}
+
+.right h2{
+    text-align:center;
+    margin-bottom:35px;
+    font-size:34px;
+    letter-spacing:1px;
+}
+
+/* Buttons */
+
+.btn{
+    width:100%;
+    padding:17px;
+    margin:14px 0;
+    border:none;
+    border-radius:16px;
+    font-size:17px;
+    font-weight:700;
+    color:white;
+    cursor:pointer;
+    transition:0.35s;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    background:linear-gradient(45deg,#2563eb,#00b0ff);
+    box-shadow:0 0 15px rgba(0,176,255,0.18);
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 24px rgba(0,176,255,0.45);
+}
+
+/* Button Variants */
+
+.view-btn{
+    background:linear-gradient(45deg,#3b82f6,#38bdf8);
+}
+
+.update-btn{
+    background:linear-gradient(45deg,#2563eb,#6366f1);
+}
+
+.search-btn{
+    background:linear-gradient(45deg,#0284c7,#0ea5e9);
+}
+
+.dashboard-btn{
+    background:linear-gradient(45deg,#1d4ed8,#3b82f6);
+}
+
+.delete-btn{
+    background:linear-gradient(45deg,#dc2626,#f43f5e);
+}
+
+/* Animations */
+
+@keyframes slideLeft{
+
+    from{
+        opacity:0;
+        transform:translateX(-70px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+@keyframes slideRight{
+
+    from{
+        opacity:0;
+        transform:translateX(70px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+/* Responsive */
+
+@media(max-width:1100px){
+
+    .main{
+        flex-direction:column;
+        text-align:center;
+        padding:40px 25px 100px;
+    }
+
+    .left{
+        width:100%;
+    }
+
+    .left h1{
+        font-size:52px;
+    }
+
+    .left p{
+        margin:auto auto 35px;
+    }
+
+    .stats{
+        justify-content:center;
+    }
+
+    .right{
+        width:100%;
+        max-width:430px;
+    }
+
+    .navbar{
+        padding:0 20px;
+    }
+}
+
+@media(max-width:650px){
+
+    .left h1{
+        font-size:42px;
+    }
+
+    .left p{
+        font-size:18px;
+    }
+
+    .badge{
+        font-size:14px;
+    }
+
+    .right{
+        padding:30px 24px;
+    }
+
+    .right h2{
+        font-size:28px;
+    }
+
+    .btn{
+        font-size:15px;
+    }
+
+    .stat-card{
+        width:100%;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Navbar -->
+
+<div class="navbar">
+
+    <div class="logo">
+
+        Employee<span>MS</span>
+
+    </div>
+
+    <a class="logout-btn"
+    href="LogoutServlet">
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        Logout
+
+    </a>
+
+</div>
+
+<!-- Main -->
+
+<div class="main">
+
+    <!-- Left -->
+
+    <div class="left">
+
+        <div class="badge">
+
+            🚀 Smart Employee Management System
+
+        </div>
+
+        <h1>
+
+            Welcome to
+            <span>Employee Portal</span>
+
+        </h1>
+
+        <p>
+
+            Manage employee records, analytics,
+            search operations and dashboard activities
+            with a secure and modern management platform.
+
+        </p>
+
+        <!-- Stats -->
+
+        <div class="stats">
+
+            <div class="stat-card">
+
+                <h2>500+</h2>
+
+                <p>Employees</p>
+
+            </div>
+
+            <div class="stat-card">
+
+                <h2>98%</h2>
+
+                <p>Accuracy</p>
+
+            </div>
+
+            <div class="stat-card">
+
+                <h2>24/7</h2>
+
+                <p>Support</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Right -->
+
+    <div class="right">
+
+        <h2>Quick Actions</h2>
+
+        <!-- Add -->
+
+        <button class="btn"
+        onclick="window.location.href='EmployeeData.html'">
+
+            <i class="fa-solid fa-user-plus"></i>
+
+            Add Employee
+
+        </button>
+
+        <!-- View -->
+
+        <button class="btn view-btn"
+        onclick="window.location.href='ViewEmployeeData'">
+
+            <i class="fa-solid fa-users"></i>
+
+            View Employees
+
+        </button>
+
+        <!-- Update -->
+
+        <button class="btn update-btn"
+        onclick="window.location.href='ViewUpdateData'">
+
+            <i class="fa-solid fa-pen"></i>
+
+            Update Employee
+
+        </button>
+
+        <!-- Search -->
+
+        <button class="btn search-btn"
+        onclick="window.location.href='SearchEmployee.html'">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            Search Employee
+
+        </button>
+
+        <!-- Dashboard -->
+
+        <button class="btn dashboard-btn"
+        onclick="window.location.href='DashboardServlet'">
+
+            <i class="fa-solid fa-chart-line"></i>
+
+            Dashboard
+
+        </button>
+
+        <!-- Delete -->
+
+        <button class="btn delete-btn"
+        onclick="window.location.href='ViewDeleteData'">
+
+            <i class="fa-solid fa-trash"></i>
+
+            Delete Employee
+
+        </button>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

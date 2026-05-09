@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Register</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#141e30,#243b55);
+    overflow:hidden;
+    position:relative;
+}
+
+/* Background Glow */
+
+body::before{
+    content:'';
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:rgba(0,255,255,0.12);
+    border-radius:50%;
+    top:-120px;
+    left:-120px;
+    filter:blur(90px);
+}
+
+body::after{
+    content:'';
+    position:absolute;
+    width:450px;
+    height:450px;
+    background:rgba(255,0,255,0.12);
+    border-radius:50%;
+    bottom:-120px;
+    right:-120px;
+    filter:blur(90px);
+}
+
+/* Main Layout */
+
+.main-container{
+    width:1100px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:70px;
+    position:relative;
+    z-index:10;
+}
+
+/* Left Section */
+
+.left-section{
+    width:48%;
+    color:white;
+    position:relative;
+    animation:slideLeft 1.2s ease;
+}
+
+.left-section h1{
+    font-size:64px;
+    line-height:1.2;
+    margin-bottom:25px;
+    font-weight:800;
+}
+
+.left-section h1 span{
+    color:#00b0ff;
+    text-shadow:0 0 15px #00b0ff;
+    animation:glow 2s infinite alternate;
+}
+
+.left-section p{
+    font-size:20px;
+    line-height:1.8;
+    color:#cbd5e1;
+    max-width:500px;
+}
+
+/* Rotating Circle */
+
+.circle{
+    position:absolute;
+    width:260px;
+    height:260px;
+    border-radius:50%;
+    border:3px solid rgba(0,229,255,0.25);
+    top:-50px;
+    left:-50px;
+    animation:rotate 10s linear infinite;
+}
+
+/* Form Container */
+
+.container{
+    width:430px;
+    padding:42px;
+    border-radius:28px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(16px);
+    border:1px solid rgba(255,255,255,0.15);
+    box-shadow:0 10px 35px rgba(0,0,0,0.4);
+    animation:slideRight 1.2s ease;
+}
+
+/* Heading */
+
+.container h2{
+    text-align:center;
+    color:white;
+    margin-bottom:30px;
+    font-size:36px;
+}
+
+/* Input Box */
+
+.input-box{
+    margin-bottom:22px;
+    position:relative;
+}
+
+.input-box label{
+    display:block;
+    color:white;
+    margin-bottom:8px;
+    font-weight:bold;
+}
+
+.input-box i{
+    position:absolute;
+    top:47px;
+    left:14px;
+    color:#cbd5e1;
+}
+
+.input-box input{
+    width:100%;
+    padding:14px 14px 14px 45px;
+    border:none;
+    border-radius:12px;
+    outline:none;
+    background:rgba(255,255,255,0.15);
+    color:white;
+    font-size:15px;
+    transition:0.3s;
+}
+
+.input-box input::placeholder{
+    color:#ddd;
+}
+
+.input-box input:focus{
+    box-shadow:0 0 14px #00e5ff;
+    transform:scale(1.02);
+}
+
+/* Button */
+
+.btn{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(45deg,#00c853,#64dd17);
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.4s;
+    margin-top:10px;
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 0 20px #00e676;
+}
+
+/* Link */
+
+.link{
+    text-align:center;
+    margin-top:24px;
+    color:white;
+}
+
+.link a{
+    color:#00e5ff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.link a:hover{
+    text-shadow:0 0 10px #00e5ff;
+}
+
+/* Animations */
+
+@keyframes glow{
+
+    from{
+        text-shadow:0 0 10px #00b0ff;
+    }
+
+    to{
+        text-shadow:
+        0 0 20px #00e5ff,
+        0 0 40px #00e5ff;
+    }
+}
+
+@keyframes rotate{
+
+    100%{
+        transform:rotate(360deg);
+    }
+}
+
+@keyframes slideLeft{
+
+    from{
+        opacity:0;
+        transform:translateX(-80px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+@keyframes slideRight{
+
+    from{
+        opacity:0;
+        transform:translateX(80px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+/* Responsive */
+
+@media(max-width:1000px){
+
+    body{
+        overflow:auto;
+        padding:40px 0;
+    }
+
+    .main-container{
+        flex-direction:column;
+        width:90%;
+        text-align:center;
+    }
+
+    .left-section{
+        width:100%;
+    }
+
+    .left-section h1{
+        font-size:44px;
+    }
+
+    .left-section p{
+        margin:auto;
+    }
+
+    .container{
+        width:100%;
+        max-width:430px;
+    }
+
+    .circle{
+        display:none;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="main-container">
+
+    <!-- Left Side -->
+
+    <div class="left-section">
+
+        <div class="circle"></div>
+
+        <h1>
+
+            Welcome to
+            <span>Employee Portal</span>
+
+        </h1>
+
+        <p>
+
+            Smart and secure employee management
+            system for modern organizations with
+            elegant dashboard and analytics.
+
+        </p>
+
+    </div>
+
+    <!-- Right Side -->
+
+    <div class="container">
+
+        <h2>Create Account</h2>
+
+        <form action="RegisterServlet"
+              method="post">
+
+            <!-- Name -->
+
+            <div class="input-box">
+
+                <label>Name</label>
+
+                <i class="fa-solid fa-user"></i>
+
+                <input type="text"
+                       name="name"
+                       placeholder="Enter Full Name"
+                       required>
+
+            </div>
+
+            <!-- Email -->
+
+            <div class="input-box">
+
+                <label>Email</label>
+
+                <i class="fa-solid fa-envelope"></i>
+
+                <input type="email"
+                       name="email"
+                       placeholder="Enter Email Address"
+                       required>
+
+            </div>
+
+            <!-- Password -->
+
+            <div class="input-box">
+
+                <label>Password</label>
+
+                <i class="fa-solid fa-lock"></i>
+
+                <input type="password"
+                       name="password"
+                       placeholder="Enter Password"
+                       required>
+
+            </div>
+
+            <!-- Button -->
+
+            <button class="btn">
+
+                <i class="fa-solid fa-user-plus"></i>
+
+                Register
+
+            </button>
+
+        </form>
+
+        <!-- Login Link -->
+
+        <div class="link">
+
+            Already have an account?
+
+            <a href="login.html">
+
+                Login
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

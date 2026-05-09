@@ -161,7 +161,7 @@ public class CreateData extends HttpServlet implements Servlet {
 			Connection con = DriverManager.getConnection(
 					"jdbc:mysql://localhost:3306/jdbc",
 					"root",
-					"Rajesh@1947");
+					"yourpassword");
 
 			PreparedStatement pst = con.prepareStatement(
 					"insert into employee values(?,?,?,?)");

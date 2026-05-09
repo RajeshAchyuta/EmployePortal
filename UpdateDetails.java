@@ -47,7 +47,7 @@ public class UpdateDetails extends HttpServlet {
 			Connection con = DriverManager.getConnection(
 					"jdbc:mysql://localhost:3306/jdbc",
 					"root",
-					"Rajesh@1947");
+					"Yourpassword");
 
 			/* Update Query */
 
